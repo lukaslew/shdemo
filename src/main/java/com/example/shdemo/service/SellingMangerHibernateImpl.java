@@ -1,16 +1,15 @@
 package com.example.shdemo.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import com.example.shdemo.domain.Car;
+import com.example.shdemo.domain.Person;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.shdemo.domain.Car;
-import com.example.shdemo.domain.Person;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Component
 @Transactional
@@ -42,7 +41,7 @@ public class SellingMangerHibernateImpl implements SellingManager {
     public List<Car> getOwnedCars(Person person) {
         person = (Person) sessionFactory.getCurrentSession().get(Person.class, person.getId());
 
-        return new ArrayList<Car>(person.getCars()); // lazy loading here - try this code without (shallow) copying
+        return new ArrayList<>(person.getCars()); // lazy loading here - try this code without (shallow) copying
     }
 
     @Override
@@ -75,6 +74,7 @@ public class SellingMangerHibernateImpl implements SellingManager {
     public List<Car> getAvailableCars() {
         return cast(Car.class, sessionFactory.getCurrentSession().getNamedQuery("car.unsold").list());
     }
+
     @Override
     public void disposeCar(Person person, Car car) {
         person = (Person) sessionFactory.getCurrentSession().get(Person.class, person.getId());
@@ -101,7 +101,7 @@ public class SellingMangerHibernateImpl implements SellingManager {
     }
 
     private <T> List<T> cast(Class<T> clazz, Collection collection) {
-        List<T> list = new ArrayList<T>(collection.size());
+        List<T> list = new ArrayList<>(collection.size());
 
         for (Object obj : collection) {
             if (clazz.isInstance(obj)) {

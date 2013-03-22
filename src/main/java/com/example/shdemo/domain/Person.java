@@ -1,9 +1,5 @@
 package com.example.shdemo.domain;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,24 +12,28 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@NamedQueries({ 
-    @NamedQuery(name = "person.all", query = "Select p from Person p"),
-    @NamedQuery(name = "person.byPin", query = "Select p from Person p where p.pin = :pin")
+@NamedQueries({
+        @NamedQuery(name = "person.all", query = "Select p from Person p"),
+        @NamedQuery(name = "person.byPin", query = "Select p from Person p where p.pin = :pin")
 })
 public class Person {
     private Long id;
     private String firstName = "unknown";
     private String pin = "";
     private Date registrationDate = new Date();
-    private List<Car> cars = new ArrayList<Car>();
+    private List<Car> cars = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -41,6 +41,7 @@ public class Person {
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -49,6 +50,7 @@ public class Person {
     public String getPin() {
         return pin;
     }
+
     public void setPin(String pin) {
         this.pin = pin;
     }
@@ -57,6 +59,7 @@ public class Person {
     public Date getRegistrationDate() {
         return registrationDate;
     }
+
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
@@ -66,6 +69,7 @@ public class Person {
     public List<Car> getCars() {
         return cars;
     }
+
     public void setCars(List<Car> cars) {
         this.cars = cars;
     }
