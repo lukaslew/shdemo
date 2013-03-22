@@ -16,6 +16,10 @@ syntax: glob
 .project
 .springBeans
 
+# idea conf file
+*.iml
+.idea
+
 
 # building
 target
