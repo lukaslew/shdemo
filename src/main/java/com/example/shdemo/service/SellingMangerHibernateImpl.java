@@ -1,6 +1,7 @@
 package com.example.shdemo.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -45,9 +46,8 @@ public class SellingMangerHibernateImpl implements SellingManager {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Person> getAllClients() {
-        return sessionFactory.getCurrentSession().getNamedQuery("person.all").list();
+        return cast(Person.class, sessionFactory.getCurrentSession().getNamedQuery("person.all").list());
     }
 
     @Override
@@ -72,9 +72,8 @@ public class SellingMangerHibernateImpl implements SellingManager {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Car> getAvailableCars() {
-        return sessionFactory.getCurrentSession().getNamedQuery("car.unsold").list();
+        return cast(Car.class, sessionFactory.getCurrentSession().getNamedQuery("car.unsold").list());
     }
     @Override
     public void disposeCar(Person person, Car car) {
@@ -99,6 +98,18 @@ public class SellingMangerHibernateImpl implements SellingManager {
     @Override
     public Car findCarById(Long id) {
         return (Car) sessionFactory.getCurrentSession().get(Car.class, id);
+    }
+
+    private <T> List<T> cast(Class<T> clazz, Collection collection) {
+        List<T> list = new ArrayList<T>(collection.size());
+
+        for (Object obj : collection) {
+            if (clazz.isInstance(obj)) {
+                list.add(clazz.cast(obj));
+            }
+        }
+
+        return list;
     }
 
 }
