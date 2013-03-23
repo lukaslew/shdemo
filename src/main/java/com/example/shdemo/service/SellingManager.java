@@ -1,5 +1,6 @@
 package com.example.shdemo.service;
 
+import com.example.shdemo.domain.Address;
 import com.example.shdemo.domain.Car;
 import com.example.shdemo.domain.Person;
 
@@ -26,5 +27,9 @@ public interface SellingManager {
     List<Car> getOwnedCars(Person person);
 
     void sellCar(Long personId, Long carId);
+
+    void addAddress(Address address);
+
+    List<Address> getPersonAddresses(Person person);
 
 }

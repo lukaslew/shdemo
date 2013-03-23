@@ -1,6 +1,8 @@
 package com.example.shdemo.service;
 
+import com.example.shdemo.domain.Address;
 import com.example.shdemo.domain.Car;
+
 import com.example.shdemo.domain.Person;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +100,17 @@ public class SellingMangerHibernateImpl implements SellingManager {
     @Override
     public Car findCarById(Long id) {
         return (Car) sessionFactory.getCurrentSession().get(Car.class, id);
+    }
+
+    @Override
+    public void addAddress(Address address) {
+        address.setId(null);
+        sessionFactory.getCurrentSession().persist(address);
+    }
+
+    @Override
+    public List<Address> getPersonAddresses(Person person) {
+        return cast(Address.class, sessionFactory.getCurrentSession().getNamedQuery("address.byPerson").setEntity("person", person).list());
     }
 
     private <T> List<T> cast(Class<T> clazz, Collection collection) {

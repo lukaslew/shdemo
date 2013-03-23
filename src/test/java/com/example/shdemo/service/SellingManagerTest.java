@@ -1,5 +1,6 @@
 package com.example.shdemo.service;
 
+import com.example.shdemo.domain.Address;
 import com.example.shdemo.domain.Car;
 import com.example.shdemo.domain.Person;
 import org.junit.Test;
@@ -36,6 +37,9 @@ public class SellingManagerTest {
 
     private static final String NAME_3 = "Andrzej";
     private static final String PIN_3 = "5678";
+
+    private static final String NAME_4 = "Damian";
+    private static final String PIN_4 = "8765";
 
     private static final String MODEL_1 = "126p";
     private static final String MAKE_1 = "Fiat";
@@ -132,6 +136,29 @@ public class SellingManagerTest {
 
         assertThat(availableCars, not(hasSize(0)));
         assertThat(person.getCars(), not(hasItems(availableCars.toArray(new Car[availableCars.size()]))));
+    }
+
+    @Test
+    public void personAddressEagerFetchingTest() {
+        Person person1 = createPerson(NAME_4, PIN_4);
+
+        Address address1 = new Address();
+        address1.setCity("Gdansk");
+        address1.setPostcode("13-678");
+        address1.setStreet("Grunwaldzka");
+        address1.setPerson(person1);
+
+        Address address2 = new Address();
+        address2.setCity("Gdynia");
+        address2.setPostcode("13-987");
+        address2.setStreet("Dluga");
+        address2.setPerson(person1);
+
+        sellingManager.addAddress(address1);
+        sellingManager.addAddress(address2);
+        Person person = sellingManager.findClientByPin(PIN_4);
+
+        assertThat(sellingManager.getPersonAddresses(person), hasItems(address1, address2));
     }
 
     private Person createPerson(String name, String pin) {

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import java.util.Objects;
 
 @Entity
 @NamedQueries({
@@ -49,5 +50,27 @@ public class Car {
 
     public void setSold(Boolean sold) {
         this.sold = sold;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, make, model, sold);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Car other = (Car) obj;
+
+        return Objects.equals(this.id, other.id) &&
+                Objects.equals(this.make, other.make) &&
+                Objects.equals(this.model, other.model) &&
+                Objects.equals(this.sold, other.sold);
     }
 }
