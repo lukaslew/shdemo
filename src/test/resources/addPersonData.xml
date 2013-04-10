@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <PERSON FIRSTNAME="Damian" PIN="8765"/>
+    <PERSON FIRSTNAME="Lolek" PIN="4321"/>
+    <PERSON FIRSTNAME="Andrzej" PIN="5678"/>
+    <PERSON FIRSTNAME="Bolek" PIN="1234"/>
+    <PERSON FIRSTNAME="Jakub" PIN="3578"/>
+</dataset>

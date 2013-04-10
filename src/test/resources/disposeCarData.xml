@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <CAR MAKE="Fiat" MODEL="126p" SOLD="true"/>
+    <CAR MAKE="Ford" MODEL="Mondeo" SOLD="true"/>
+    <CAR MAKE="Fiat" MODEL="126p" SOLD="false"/>
+    <CAR MAKE="Ford" MODEL="Mondeo" SOLD="true"/>
+    <CAR MAKE="Honda" MODEL="Civic" SOLD="true"/>
+    <CAR MAKE="Peugeot" MODEL="5008" SOLD="false"/>
+    <CAR MAKE="Fiat" MODEL="Sedici" SOLD="true"/>
+    <CAR MAKE="Audi" MODEL="A6" SOLD="true"/>
+
+    <PERSON FIRSTNAME="Damian" PIN="8765"/>
+    <PERSON FIRSTNAME="Lolek" PIN="4321"/>
+    <PERSON FIRSTNAME="Andrzej" PIN="5678"/>
+    <PERSON FIRSTNAME="Bolek" PIN="1234"/>
+    <PERSON FIRSTNAME="Paulina" PIN="8235"/>
+</dataset>

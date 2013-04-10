@@ -3,6 +3,7 @@ package com.example.shdemo.service;
 import com.example.shdemo.domain.Address;
 import com.example.shdemo.domain.Car;
 import com.example.shdemo.domain.Person;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -24,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(locations = {"classpath:/beans.xml"})
 @TransactionConfiguration(transactionManager = "txManager", defaultRollback = true)
 @Transactional
+@Ignore
 public class SellingManagerTest {
 
     @Autowired

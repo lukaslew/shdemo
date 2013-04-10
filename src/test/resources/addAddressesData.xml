@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <PERSON FIRSTNAME="Damian" PIN="8765"/>
+    <PERSON FIRSTNAME="Lolek" PIN="4321"/>
+    <PERSON FIRSTNAME="Andrzej" PIN="5678"/>
+    <PERSON FIRSTNAME="Bolek" PIN="1234"/>
+    <PERSON FIRSTNAME="Natalia" PIN="7648"/>
+
+    <ADDRESS CITY="Gdansk" POSTCODE="13-678" STREET="Grunwaldzka"/>
+    <ADDRESS CITY="Gdynia" POSTCODE="13-987" STREET="Dluga"/>
+    <ADDRESS CITY="Gdynia" POSTCODE="13-678" STREET="Grunwaldzka"/>
+    <ADDRESS CITY="Gdańsk" POSTCODE="13-987" STREET="Dluga"/>
+</dataset>

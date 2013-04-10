@@ -2,9 +2,9 @@ package com.example.shdemo.service;
 
 import com.example.shdemo.domain.Address;
 import com.example.shdemo.domain.Car;
-
 import com.example.shdemo.domain.Person;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,15 +28,16 @@ public class SellingMangerHibernateImpl implements SellingManager {
 
     @Override
     public void deleteClient(Person person) {
-        person = (Person) sessionFactory.getCurrentSession().get(Person.class, person.getId());
+        Session currentSession = sessionFactory.getCurrentSession();
+        person = (Person) currentSession.get(Person.class, person.getId());
 
         // lazy loading here
         for (Car car : person.getCars()) {
             car.setSold(false);
-            sessionFactory.getCurrentSession().update(car);
+            currentSession.update(car);
         }
 
-        sessionFactory.getCurrentSession().delete(person);
+        currentSession.delete(person);
     }
 
     @Override
@@ -65,11 +66,15 @@ public class SellingMangerHibernateImpl implements SellingManager {
 
     @Override
     public void sellCar(Long personId, Long carId) {
-        Person person = (Person) sessionFactory.getCurrentSession().get(Person.class, personId);
-        Car car = (Car) sessionFactory.getCurrentSession().get(Car.class, carId);
+        Session currentSession = sessionFactory.getCurrentSession();
+        Person person = (Person) currentSession.get(Person.class, personId);
+        Car car = (Car) currentSession.get(Car.class, carId);
 
         car.setSold(true);
         person.getCars().add(car);
+
+        currentSession.update(car);
+        currentSession.flush();
     }
 
     @Override
@@ -79,8 +84,9 @@ public class SellingMangerHibernateImpl implements SellingManager {
 
     @Override
     public void disposeCar(Person person, Car car) {
-        person = (Person) sessionFactory.getCurrentSession().get(Person.class, person.getId());
-        car = (Car) sessionFactory.getCurrentSession().get(Car.class, car.getId());
+        Session currentSession = sessionFactory.getCurrentSession();
+        person = (Person) currentSession.get(Person.class, person.getId());
+        car = (Car) currentSession.get(Car.class, car.getId());
 
         Car toRemove = null;
         // lazy loading here (person.getCars)
@@ -95,6 +101,8 @@ public class SellingMangerHibernateImpl implements SellingManager {
         }
 
         car.setSold(false);
+        currentSession.update(car);
+        currentSession.flush();
     }
 
     @Override

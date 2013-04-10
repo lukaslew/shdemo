@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @NamedQueries({
@@ -72,5 +73,28 @@ public class Person {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, pin, registrationDate, cars);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final Person other = (Person) obj;
+
+        return Objects.equals(this.firstName, other.firstName) &&
+                Objects.equals(this.pin, other.pin) &&
+                Objects.equals(this.registrationDate, other.registrationDate) &&
+                Objects.equals(this.cars, other.cars);
     }
 }

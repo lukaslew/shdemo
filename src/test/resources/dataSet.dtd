@@ -1,0 +1,37 @@
+<!ELEMENT dataset (
+        ADDRESS*,
+        CAR*,
+        PERSON*,
+        PERSON_CAR*)>
+
+        <!ELEMENT ADDRESS EMPTY>
+        <!ATTLIST ADDRESS
+                ID CDATA #REQUIRED
+                CITY CDATA #IMPLIED
+                POSTCODE CDATA #IMPLIED
+                STREET CDATA #IMPLIED
+                PERSON_ID CDATA #IMPLIED
+                >
+
+        <!ELEMENT CAR EMPTY>
+        <!ATTLIST CAR
+                ID CDATA #REQUIRED
+                MAKE CDATA #IMPLIED
+                MODEL CDATA #IMPLIED
+                SOLD CDATA #IMPLIED
+                >
+
+        <!ELEMENT PERSON EMPTY>
+        <!ATTLIST PERSON
+                ID CDATA #REQUIRED
+                FIRSTNAME CDATA #IMPLIED
+                PIN CDATA #REQUIRED
+                REGISTRATIONDATE CDATA #IMPLIED
+                >
+
+        <!ELEMENT PERSON_CAR EMPTY>
+        <!ATTLIST PERSON_CAR
+                CARS_ID CDATA #REQUIRED
+                PERSON_ID CDATA #REQUIRED
+                >
+

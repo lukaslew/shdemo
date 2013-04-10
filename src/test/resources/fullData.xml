@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <CAR ID="1" MAKE="Fiat" MODEL="126p" SOLD="true"/>
+    <CAR ID="2" MAKE="Ford" MODEL="Mondeo" SOLD="true"/>
+    <CAR ID="3" MAKE="Fiat" MODEL="126p" SOLD="false"/>
+    <CAR ID="4" MAKE="Ford" MODEL="Mondeo" SOLD="true"/>
+    <CAR ID="5" MAKE="Honda" MODEL="Civic" SOLD="true"/>
+
+    <PERSON ID="1" FIRSTNAME="Damian" PIN="8765" REGISTRATIONDATE="2013-04-05"/>
+    <PERSON ID="2" FIRSTNAME="Lolek" PIN="4321" REGISTRATIONDATE="2013-04-05"/>
+    <PERSON ID="3" FIRSTNAME="Andrzej" PIN="5678" REGISTRATIONDATE="2013-04-05"/>
+    <PERSON ID="4" FIRSTNAME="Bolek" PIN="1234" REGISTRATIONDATE="2013-04-05"/>
+
+    <PERSON_CAR CARS_ID="2" PERSON_ID="2"/>
+    <PERSON_CAR CARS_ID="1" PERSON_ID="3"/>
+    <PERSON_CAR CARS_ID="4" PERSON_ID="3"/>
+    <PERSON_CAR CARS_ID="5" PERSON_ID="3"/>
+
+    <ADDRESS ID="1" CITY="Gdansk" POSTCODE="13-678" STREET="Grunwaldzka" PERSON_ID="1"/>
+    <ADDRESS ID="2" CITY="Gdynia" POSTCODE="13-987" STREET="Dluga" PERSON_ID="1"/>
+</dataset>
